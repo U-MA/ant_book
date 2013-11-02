@@ -21,6 +21,9 @@ void input()
 
 bool search(int row, int col)
 {
+    if (row < 0 || row >= N || col < 0 || col >= M)
+        return false;
+
     int dr[8] = { -1, -1, -1,  0,  0, +1, +1, +1 };
     int dc[8] = { -1,  0,  1, -1,  1, -1,  0, +1 };
 
