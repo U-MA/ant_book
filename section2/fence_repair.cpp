@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 #include <algorithm>
 using namespace std;
 
@@ -35,12 +36,33 @@ void solve()
     cout << ans << endl;
 }
 
+void solve2()
+{
+    priority_queue<int, vector<int>, greater<int> > que;
+
+    for (int i=0; i < N; i++)
+    {
+        que.push(L[i]);
+    }
+
+    long long ans = 0;
+    while (que.size() > 1)
+    {
+        // 1,2番目に小さい板を取り出す
+        int l1 = que.top(); que.pop();
+        int l2 = que.top(); que.pop();
+
+        ans += l1+l2;
+        que.push(l1+l2);
+    }
+
+    cout << ans << endl;
+}
+
 
 int main()
 {
-    cerr << "Fence Repair(POJ No.3253)" << endl;
-    
     input();
-    solve();
+    solve2();
     return 0;
 }
